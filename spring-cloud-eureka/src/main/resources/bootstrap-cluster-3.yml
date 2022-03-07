@@ -1,0 +1,13 @@
+server:
+  port: 8764
+
+spring:
+  application:
+    name: mmp-eureka-cluster
+
+eureka:
+  instance:
+    hostname: mmp-eureka-cluster-3
+  client:
+    service-url:
+      defaultZone: http://mmp-eureka-cluster-1:8762/eureka/,http://mmp-eureka-cluster-2:8763/eureka/

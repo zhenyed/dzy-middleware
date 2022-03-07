@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: spring-cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: test
+          uri: lb://SPRING-BOOT
+          predicates:
+            - Path=/test/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+    # 定时刷新本地缓存时间
+    registry-fetch-interval-seconds: 5
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    # 没有心跳的淘汰时间
+    lease-expiration-duration-in-seconds: 5
+    # 心跳间隔
+    lease-renewal-interval-in-seconds: 5

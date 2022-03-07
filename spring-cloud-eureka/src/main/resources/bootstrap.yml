@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-cloud-eureka
+
+eureka:
+  instance:
+    hostname: localhost
+#    leaseRenewalIntervalInSeconds: 5
+#    leaseExpirationDurationInSeconds: 10
+#    lease:
+#      renewalInterval: 12
+  client:
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#  server:
+#    enableSelfPreservation: false
+#    evictionIntervalTimerInMs: 5000
+#    useReadOnlyResponseCache: false
