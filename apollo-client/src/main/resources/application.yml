@@ -1,0 +1,8 @@
+app:
+  id: apollo-client
+apollo:
+  # cluster: beijing
+  meta: http://localhost:6080
+  bootstrap:
+    enabled: true
+    namespaces: application

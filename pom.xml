@@ -13,6 +13,7 @@
         <module>spring-cloud-gateway</module>
         <module>spring-cloud-eureka-server</module>
         <module>spring-cloud-eureka-client</module>
+        <module>apollo-client</module>
     </modules>
 
     <properties>
@@ -22,6 +23,13 @@
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -38,6 +46,12 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>1.9.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
