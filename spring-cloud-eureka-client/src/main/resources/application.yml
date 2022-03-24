@@ -1,14 +1,11 @@
-server:
-  shutdown: graceful
-
 spring:
   application:
-    name: spring-boot
+    name: spring-cloud-eureka-client
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://localhost:8761/eureka/
 #    fetch-registry: true
 #    registry-fetch-interval-seconds: 8
   instance:

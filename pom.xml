@@ -11,10 +11,8 @@
 
     <modules>
         <module>spring-cloud-gateway</module>
-        <module>spring-cloud-eureka</module>
-        <module>shenyu</module>
-        <module>nacos</module>
-        <module>spring-boot</module>
+        <module>spring-cloud-eureka-server</module>
+        <module>spring-cloud-eureka-client</module>
     </modules>
 
     <properties>
