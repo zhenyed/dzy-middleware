@@ -14,6 +14,7 @@
         <module>spring-cloud-eureka-server</module>
         <module>spring-cloud-eureka-client</module>
         <module>apollo-client</module>
+        <module>sharding-jdbc</module>
     </modules>
 
     <properties>
@@ -28,6 +29,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.21</version>
         </dependency>
     </dependencies>
 
@@ -46,12 +52,6 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.ctrip.framework.apollo</groupId>
-                <artifactId>apollo-client</artifactId>
-                <version>1.9.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

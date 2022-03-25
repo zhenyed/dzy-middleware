@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: sharding-jdbc
+  shardingsphere:
+    props:
+      sql:
+        show: true
+    datasource:
+      names: demo
+      demo:
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/demo-sharding?useUnicode=true&characterEncoding=UTF8&serverTimezone=CTT
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        username: root
+        password: 123456
+    sharding:
+      tables:
+        demo_number:
+          actual-data-nodes: demo.demo_number_$->{0..2}
+          table-strategy:
+            inline:
+              algorithm-expression: demo_number_$->{id % 3}
+              sharding-column: id
+        demo_string:
+          actual-data-nodes: demo.demo_string_$->{0..2}
+          table-strategy:
+            inline:
+              algorithm-expression: demo_string_$->{(id.hashCode() & Integer.MAX_VALUE) % 3}
+              sharding-column: id
+        demo_year:
+          actual-data-nodes: demo.demo_year_$->{2022..2023}
+          table-strategy:
+            complex:
+              sharding-columns: create_time
+              algorithm-class-name: io.zhenye.sharding.YearShardingAlgorithm
+        demo_year_month:
+          actual-data-nodes: demo.demo_year_month_$->{2022..2022}_$->{1..12}
+          table-strategy:
+            complex:
+              sharding-columns: create_time
+              algorithm-class-name: io.zhenye.sharding.YearMonthShardingAlgorithm
+        demo_special:
+          actual-data-nodes: demo.demo_special_$->{2022..2022}_$->{0..2}
+          table-strategy:
+            complex:
+              sharding-columns: id,create_time
+              algorithm-class-name: io.zhenye.sharding.special.YearAndIdShardingAlgorithm
