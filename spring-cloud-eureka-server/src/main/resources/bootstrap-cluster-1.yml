@@ -3,11 +3,11 @@ server:
 
 spring:
   application:
-    name: mmp-eureka-cluster
+    name: eureka-cluster
 
 eureka:
   instance:
-    hostname: mmp-eureka-cluster-1
+    hostname: eureka-cluster-1
   client:
     service-url:
-      defaultZone: http://mmp-eureka-cluster-2:8763/eureka/,http://mmp-eureka-cluster-3:8764/eureka/
+      defaultZone: http://eureka-cluster-2:8763/eureka/,http://eureka-cluster-3:8764/eureka/
