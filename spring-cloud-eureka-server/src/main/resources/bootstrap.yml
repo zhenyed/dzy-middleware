@@ -3,20 +3,13 @@ server:
 
 spring:
   application:
-    name: spring-cloud-eureka-server
+    name: eureka-server
 
 eureka:
   instance:
-    hostname: localhost
-#    leaseRenewalIntervalInSeconds: 5
-#    leaseExpirationDurationInSeconds: 10
-#    lease:
-#      renewalInterval: 12
+    hostname: eureka-server
   client:
+    register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-#  server:
-#    enableSelfPreservation: false
-#    evictionIntervalTimerInMs: 5000
-#    useReadOnlyResponseCache: false
+      defaultZone: http://localhost:${server.port}/eureka/

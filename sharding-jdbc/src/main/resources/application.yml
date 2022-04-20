@@ -32,16 +32,16 @@ spring:
           table-strategy:
             complex:
               sharding-columns: create_time
-              algorithm-class-name: io.zhenye.sharding.YearShardingAlgorithm
+              algorithm-class-name: io.zhenye.sharding.algorithm.YearShardingAlgorithm
         demo_year_month:
           actual-data-nodes: demo.demo_year_month_$->{2022..2022}_$->{1..12}
           table-strategy:
             complex:
               sharding-columns: create_time
-              algorithm-class-name: io.zhenye.sharding.YearMonthShardingAlgorithm
+              algorithm-class-name: io.zhenye.sharding.algorithm.YearMonthShardingAlgorithm
         demo_special:
           actual-data-nodes: demo.demo_special_$->{2022..2022}_$->{0..2}
           table-strategy:
             complex:
               sharding-columns: id,create_time
-              algorithm-class-name: io.zhenye.sharding.special.YearAndIdShardingAlgorithm
+              algorithm-class-name: io.zhenye.sharding.algorithm.special.YearAndIdShardingAlgorithm

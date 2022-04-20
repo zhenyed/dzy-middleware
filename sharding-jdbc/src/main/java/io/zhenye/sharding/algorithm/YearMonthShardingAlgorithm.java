@@ -1,4 +1,4 @@
-package io.zhenye.sharding;
+package io.zhenye.sharding.algorithm;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ReUtil;
@@ -12,7 +12,7 @@ import org.apache.shardingsphere.api.sharding.complex.ComplexKeysShardingValue;
 import java.util.*;
 
 @Slf4j
-public class YearShardingAlgorithm<T extends Comparable<?>> implements ComplexKeysShardingAlgorithm<T> {
+public class YearMonthShardingAlgorithm<T extends Comparable<?>> implements ComplexKeysShardingAlgorithm<T> {
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, ComplexKeysShardingValue<T> shardingValues) {
         List<String> result = Lists.newArrayList(availableTargetNames);
@@ -25,7 +25,7 @@ public class YearShardingAlgorithm<T extends Comparable<?>> implements ComplexKe
         // 移除不符合条件的时间
         if (CollectionUtils.isNotEmpty(createTimeList)) {
             for (Date createTime : createTimeList) {
-                result.removeIf(i -> !i.endsWith("_" + DateUtil.year(createTime)));
+                result.removeIf(i -> !i.contains("_" + DateUtil.year(createTime) + "_" + DateUtil.month(createTime)));
             }
         }
 
@@ -35,11 +35,11 @@ public class YearShardingAlgorithm<T extends Comparable<?>> implements ComplexKe
         if (range != null) {
             // 2.1.移除小于最小值
             if (range.hasLowerBound()) {
-                result.removeIf(i -> Integer.parseInt(ReUtil.getGroup0("_[0-9]{4}", i).substring(1)) < DateUtil.year(range.lowerEndpoint()));
+                result.removeIf(i -> Integer.parseInt(ReUtil.getGroup0("_[0-9]{4}_", i).substring(1, 5)) < DateUtil.year(range.lowerEndpoint()));
             }
             // 2.2.移除大于最大值
             if (range.hasUpperBound()) {
-                result.removeIf(i -> Integer.parseInt(ReUtil.getGroup0("_[0-9]{4}", i).substring(1)) > DateUtil.year(range.upperEndpoint()));
+                result.removeIf(i -> Integer.parseInt(ReUtil.getGroup0("_[0-9]{4}_", i).substring(1, 5)) > DateUtil.year(range.upperEndpoint()));
             }
         }
 
