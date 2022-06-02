@@ -10,9 +10,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>spring-cloud-gateway</module>
-        <module>spring-cloud-eureka-server</module>
-        <module>spring-cloud-eureka-client</module>
+        <module>gateway</module>
+        <module>eureka-server</module>
+        <module>eureka-client</module>
         <module>apollo-client</module>
         <module>sharding-jdbc</module>
     </modules>
@@ -22,7 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
     </properties>
 
     <dependencies>
