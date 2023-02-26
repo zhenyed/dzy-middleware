@@ -12,10 +12,11 @@ import org.apache.shardingsphere.api.sharding.complex.ComplexKeysShardingValue;
 import java.util.*;
 
 @Slf4j
+@SuppressWarnings("unchecked")
 public class YearShardingAlgorithm<T extends Comparable<?>> implements ComplexKeysShardingAlgorithm<T> {
     @Override
     public Collection<String> doSharding(Collection<String> availableTargetNames, ComplexKeysShardingValue<T> shardingValues) {
-        List<String> result = Lists.newArrayList(availableTargetNames);
+        List<String> result = Lists.newLinkedList(availableTargetNames);
         String firstTableName = result.get(0);
 
         // 处理精确条件
